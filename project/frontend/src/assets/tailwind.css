@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 自定义样式 */
+@layer components {
+    .academic-card {
+        @apply border-l-4 border-blue-500 transition-all duration-300;
+    }
+    .academic-card:hover {
+        @apply -translate-y-1 shadow-md;
+    }
+    .timeline-item::before {
+        @apply content-[''] absolute left-[-20px] top-0 w-3 h-3 rounded-full bg-blue-500;
+    }
+}
