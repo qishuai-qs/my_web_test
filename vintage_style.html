@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知库 - 复古风</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap');
+        body {
+            background-color: #f5f0e6;
+            background-image: url("https://www.transparenttextures.com/patterns/cream-paper.png");
+            color: #333;
+            font-family: 'Noto Serif SC', serif;
+        }
+        .newspaper-title {
+            font-family: 'Ma Shan Zheng', cursive;
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 8px;
+        }
+        .ink-border {
+            border-bottom: 2px solid #8b5a2b;
+        }
+        .stamp {
+            border: 2px dashed #8b5a2b;
+            padding: 4px 8px;
+            display: inline-block;
+            transform: rotate(5deg);
+            background-color: rgba(255,255,255,0.7);
+        }
+        .handwritten {
+            font-family: 'Ma Shan Zheng', cursive;
+        }
+        .ink-spot {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-image: radial-gradient(circle, rgba(139,90,43,0.1) 0%, rgba(139,90,43,0) 70%);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="px-4 py-8 relative">
+    <!-- 墨水渍装饰 -->
+    <div class="ink-spot top-20 right-10"></div>
+    <div class="ink-spot bottom-1/3 left-5"></div>
+
+    <div class="max-w-4xl mx-auto">
+        <!-- 报纸标题区 -->
+        <header class="mb-8 text-center">
+            <h1 class="newspaper-title text-5xl text-gray-800 mb-2">知识日报</h1>
+            <div class="flex justify-center items-center">
+                <span class="stamp text-sm text-gray-700 mr-4">第1024期</span>
+                <span class="text-gray-600">2023年11月15日</span>
+            </div>
+        </header>
+
+        <!-- 导航栏 -->
+        <nav class="ink-border mb-8 pb-4">
+            <div class="flex justify-center space-x-8">
+                <a href="#" class="text-gray-700 hover:text-amber-900 font-medium">学习资源</a>
+                <a href="#" class="text-gray-700 hover:text-amber-900 font-medium">游戏世界</a>
+                <button class="handwritten bg-amber-800 text-white px-4 py-1 rounded-sm text-sm">
+                    <i class="fas fa-user mr-1"></i>读者登录
+                </button>
+            </div>
+        </nav>
+
+        <!-- 主要内容区 -->
+        <main>
+            <!-- 头条文章 -->
+            <article class="mb-12 border-b border-amber-200 pb-8">
+                <h2 class="text-3xl font-bold mb-4 underline decoration-amber-800 decoration-wavy">设计模式精要</h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="md:col-span-2">
+                        <p class="mb-4 leading-relaxed">在软件开发领域，设计模式代表了经验丰富的开发者们多年积累的最佳实践。本文将带您深入探讨单例模式、观察者模式和工厂方法模式三大经典模式...</p>
+                        <div class="flex items-center text-sm text-amber-900">
+                            <span class="mr-4"><i class="fas fa-tags mr-1"></i> 编程</span>
+                            <span><i class="fas fa-download mr-1"></i> 下载PDF</span>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="https://picsum.photos/400/250?random=4" alt="设计模式" class="w-full border-4 border-white shadow-lg">
+                    </div>
+                </div>
+            </article>
+
+            <!-- 双栏内容 -->
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <!-- 左栏 -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 border-l-4 border-amber-800 pl-2">学习资源</h3>
+                    <ul class="space-y-4">
+                        <li class="border-b border-amber-100 pb-4">
+                            <h4 class="font-bold mb-1">JavaScript ES6+ 新特性</h4>
+                            <p class="text-sm text-gray-600 mb-2">全面解析现代JavaScript语法特性</p>
+                            <span class="text-xs bg-amber-100 text-amber-800 px-2 py-1">教程</span>
+                        </li>
+                        <!-- 更多资源... -->
+                    </ul>
+                </div>
+
+                <!-- 右栏 -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 border-l-4 border-amber-800 pl-2">游戏攻略</h3>
+                    <div class="bg-white p-4 shadow-sm mb-4">
+                        <img src="https://picsum.photos/300/150?random=5" alt="游戏攻略" class="w-full mb-3">
+                        <h4 class="font-bold mb-1">塞尔达传说：王国之泪</h4>
+                        <p class="text-sm text-gray-600">全神庙位置与解谜指南</p>
+                    </div>
+                    <!-- 更多游戏内容... -->
+                </div>
+            </div>
+
+            <!-- 历史回顾 -->
+            <section class="bg-white p-6 shadow-sm border border-amber-200">
+                <h3 class="text-xl font-bold mb-4 handwritten text-amber-900">历史今日</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="border-b border-amber-100 pb-4">
+                        <h4 class="font-bold mb-1">1994年</h4>
+                        <p class="text-sm">JavaScript语言诞生</p>
+                    </div>
+                    <!-- 更多历史事件... -->
+                </div>
+            </section>
+        </main>
+
+        <!-- 页脚 -->
+        <footer class="mt-12 text-center text-sm text-gray-500">
+            <p class="mb-2">本期编辑：<span class="handwritten text-gray-700">知识库管理员</span></p>
+            <p>© 2023 知识日报社</p>
+        </footer>
+    </div>
+</body>
+</html>

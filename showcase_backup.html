@@ -1,0 +1,105 @@
+<!DOCTYPE html> <!-- 声明文档类型为HTML5 -->
+<html lang="en"> <!-- 设置页面语言为英语 -->
+<head> <!-- 文档头部，包含元数据和资源引用 -->
+    <meta charset="UTF-8"> <!-- 设置字符编码为UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 使页面适配移动设备 -->
+    <title>My Project Showcase</title> <!-- 浏览器标签页显示的标题 -->
+    
+    <!-- 引入Tailwind CSS框架 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* 英雄区域渐变背景 */
+        .hero {
+            background: linear-gradient(135deg, #6b46c1 0%, #3b82f6 100%);
+        }
+        /* 卡片悬停效果 */
+        .card {
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="font-sans"> <!-- 使用无衬线字体 -->
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-xl font-bold text-indigo-600">MyProject</div> <!-- 网站Logo -->
+            <div class="flex space-x-6"> <!-- 导航链接 -->
+                <a href="#" class="text-gray-600 hover:text-indigo-600">Home</a>
+                <a href="#" class="text-gray-600 hover:text-indigo-600">About</a>
+                <a href="#" class="text-gray-600 hover:text-indigo-600">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主展示区 -->
+    <section class="hero text-white py-20">
+        <div class="max-w-4xl mx-auto text-center px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Welcome to My Project</h1> <!-- 主标题 -->
+            <p class="text-xl mb-8 max-w-2xl mx-auto">A simple yet powerful solution for your needs</p> <!-- 副标题 -->
+            <div class="flex justify-center space-x-4"> <!-- 行动按钮 -->
+                <a href="#" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition">Learn More</a>
+                <a href="#" class="border-2 border-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-indigo-600 transition">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能卡片区 -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Key Features</h2> <!-- 特性区标题 -->
+            <div class="grid md:grid-cols-3 gap-8"> <!-- 三列网格布局 -->
+                <!-- 特性卡片1 -->
+                <div class="card bg-white p-8 rounded-xl shadow-sm">
+                    <div class="text-indigo-600 text-4xl mb-4">
+                        <i class="fas fa-bolt"></i> <!-- 闪电图标 -->
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Fast Performance</h3>
+                    <p class="text-gray-600">Optimized for speed and efficiency to deliver the best user experience.</p>
+                </div>
+                
+                <!-- 特性卡片2 -->
+                <div class="card bg-white p-8 rounded-xl shadow-sm">
+                    <div class="text-indigo-600 text-4xl mb-4">
+                        <i class="fas fa-mobile-alt"></i> <!-- 手机图标 -->
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Responsive Design</h3>
+                    <p class="text-gray-600">Looks great on any device, from desktop to mobile phones.</p>
+                </div>
+                
+                <!-- 特性卡片3 -->
+                <div class="card bg-white p-8 rounded-xl shadow-sm">
+                    <div class="text-indigo-600 text-4xl mb-4">
+                        <i class="fas fa-cog"></i> <!-- 齿轮图标 -->
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Easy to Use</h3>
+                    <p class="text-gray-600">Intuitive interface that requires minimal training to get started.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="text-xl font-bold mb-2">MyProject</div> <!-- 页脚品牌名 -->
+                    <p class="text-gray-400">© 2023 All rights reserved</p> <!-- 版权信息 -->
+                </div>
+                <div class="flex space-x-6"> <!-- 社交媒体图标 -->
+                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-github"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

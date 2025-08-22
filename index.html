@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知库 - 个人知识门户</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 自定义样式 -->
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: currentColor;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="text-xl font-bold text-indigo-600 flex items-center">
+                        <i class="fas fa-book-open mr-2"></i>
+                        <span>知库</span>
+                    </div>
+                    <div class="hidden md:ml-8 md:flex md:space-x-8">
+                        <a href="#" class="nav-link text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 border-indigo-500 text-sm font-medium">首页</a>
+                        <a href="#resources" class="nav-link text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">学习资源</a>
+                        <a href="#games" class="nav-link text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">游戏攻略</a>
+                        <a href="#history" class="nav-link text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">历史回顾</a>
+                        <a href="#about" class="nav-link text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">关于</a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="flex items-center space-x-4">
+                        <div id="userPanel" class="hidden flex items-center">
+                            <img id="userAvatar" class="w-8 h-8 rounded-full" src="" alt="用户头像">
+                            <span id="userName" class="ml-2 text-sm font-medium text-gray-700"></span>
+                            <button onclick="logout()" class="ml-4 text-sm text-gray-500 hover:text-gray-700">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </button>
+                        </div>
+                        <div class="flex space-x-2">
+                            <div class="flex-shrink-0">
+                                <button id="loginBtn" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none">
+                                    <i class="fab fa-qq mr-2"></i>
+                                    <span>QQ登录</span>
+                                </button>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <button id="wxLoginBtn" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 shadow-sm hover:bg-green-700 focus:outline-none">
+                                    <i class="fab fa-weixin mr-2"></i>
+                                    <span>微信登录</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="wxLoginContainer" class="hidden"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <main>
+        <!-- 英雄区域 -->
+        <section class="gradient-bg text-white py-20">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">构建您的个人知识库</h1>
+                <p class="text-xl mb-8 max-w-2xl mx-auto">汇集学习资料、游戏攻略与历史记录的一站式平台</p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
+                    <a href="#resources" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition">探索资源</a>
+                    <a href="#features" class="border-2 border-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-indigo-600 transition">了解功能</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 功能区域 -->
+        <section id="features" class="py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-12">核心功能</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- 功能卡片1 -->
+                    <div class="card-hover bg-white p-8 rounded-xl shadow-sm">
+                        <div class="text-indigo-600 text-4xl mb-4">
+                            <i class="fas fa-cloud-download-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">资源下载</h3>
+                        <p class="text-gray-600">分类整理的学习资料、工具软件等资源下载，支持多线程高速下载</p>
+                    </div>
+                    
+                    <!-- 功能卡片2 -->
+                    <div class="card-hover bg-white p-8 rounded-xl shadow-sm">
+                        <div class="text-indigo-600 text-4xl mb-4">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">游戏攻略</h3>
+                        <p class="text-gray-600">热门游戏图文/视频攻略，支持玩家社区互动讨论</p>
+                    </div>
+                    
+                    <!-- 功能卡片3 -->
+                    <div class="card-hover bg-white p-8 rounded-xl shadow-sm">
+                        <div class="text-indigo-600 text-4xl mb-4">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">安全可靠</h3>
+                        <p class="text-gray-600">采用HTTPS加密传输，所有资源经过安全扫描，确保无毒无害</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 资源下载区 -->
+        <section id="resources" class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold mb-12 text-center">学习资源</h2>
+                <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    <!-- 资源卡片将通过JS动态加载 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 其他区域占位符 -->
+        <section id="games" class="py-16">
+            <!-- 游戏攻略区内容将通过JS加载 -->
+        </section>
+
+        <section id="history" class="py-16 bg-gray-50">
+            <!-- 历史回顾区内容将通过JS加载 -->
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">关于我们</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white">项目简介</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">更新日志</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">帮助中心</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white">常见问题</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">联系支持</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">法律信息</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white">使用条款</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">隐私政策</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">关注我们</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-weixin text-xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-qq text-xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-weibo text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 text-sm">
+                <p>© 2023 知库知识门户. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 引入必要的JS库 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- QQ登录SDK -->
+    <script src="https://connect.qq.com/qc_jssdk.js" data-appid="您的QQ互联APPID" data-redirecturi="https://您的域名/callback"></script>
+    <!-- 微信登录SDK -->
+    <script src="https://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+    <script>
+        // 登录状态管理
+        let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
+        
+        // 登出功能
+        function logout() {
+            localStorage.removeItem('currentUser');
+            currentUser = null;
+            updateAuthUI();
+            if (QC.Login.check()) {
+                QC.Login.signOut();
+            }
+        }
+
+        // 初始化登录
+        document.addEventListener('DOMContentLoaded', function() {
+            updateAuthUI();
+            
+            // QQ登录按钮事件
+            document.getElementById('loginBtn').addEventListener('click', function() {
+                QC.Login.showPopup({
+                    appId: "您的QQ互联APPID",
+                    redirectURI: "https://您的域名/callback"
+                });
+            });
+
+            // 微信登录按钮事件
+            document.getElementById('wxLoginBtn').addEventListener('click', function() {
+                const obj = new WxLogin({
+                    self_redirect: false,
+                    id: "wxLoginContainer",
+                    appid: "您的微信开放平台APPID",
+                    scope: "snsapi_login",
+                    redirect_uri: encodeURIComponent("https://您的域名/wxcallback"),
+                    state: "random_state",
+                    style: "black",
+                    href: ""
+                });
+            });
+            
+            // 监听QQ登录状态变化
+            QC.Login({
+                btnId: "loginBtn",
+                status: true
+            }, function(reqData, opts) {
+                if (QC.Login.check()) {
+                    QC.api("get_user_info").success(function(res) {
+                        const user = {
+                            id: QC.Login.getMe(),
+                            nickname: res.data.nickname,
+                            avatar: res.data.figureurl_qq_2,
+                            source: 'qq'
+                        };
+                        localStorage.setItem('currentUser', JSON.stringify(user));
+                        currentUser = user;
+                        updateAuthUI();
+                    });
+                }
+            });
+            
+            // 加载页面内容
+            loadResources();
+        });
+
+        // 更新登录状态UI
+        function updateAuthUI() {
+            const loginBtn = document.getElementById('loginBtn');
+            const userPanel = document.getElementById('userPanel');
+            
+            if (currentUser) {
+                loginBtn.classList.add('hidden');
+                userPanel.classList.remove('hidden');
+                document.getElementById('userAvatar').src = currentUser.avatar;
+                document.getElementById('userName').textContent = currentUser.nickname;
+            } else {
+                loginBtn.classList.remove('hidden');
+                userPanel.classList.add('hidden');
+            }
+        }
+
+        // 加载资源数据
+        function loadResources() {
+            // 模拟API获取资源数据
+            const sampleResources = [
+                {
+                    id: 1,
+                    title: "JavaScript高级教程",
+                    type: "pdf",
+                    size: "2.4MB",
+                    downloadUrl: "#",
+                    category: "编程",
+                    description: "深入讲解JavaScript高级特性，包括闭包、原型链、异步编程等核心概念"
+                },
+                {
+                    id: 2,
+                    title: "设计模式手册",
+                    type: "epub",
+                    size: "5.1MB",
+                    downloadUrl: "#",
+                    category: "编程",
+                    description: "23种设计模式的详细讲解与实战案例"
+                },
+                {
+                    id: 3,
+                    title: "机器学习实战",
+                    type: "pdf",
+                    size: "8.2MB",
+                    downloadUrl: "#",
+                    category: "AI",
+                    description: "从零开始掌握机器学习算法与TensorFlow实战"
+                }
+            ];
+            
+            const container = document.querySelector('#resources .grid');
+            container.innerHTML = sampleResources.map(resource => `
+                <div class="card-hover bg-white rounded-lg shadow-sm overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-indigo-100 p-3 rounded-lg text-indigo-600">
+                                <i class="fas fa-file-${getFileIcon(resource.type)} text-xl"></i>
+                            </div>
+                            <div class="ml-4 flex-1">
+                                <h3 class="text-lg font-medium">${resource.title}</h3>
+                                <p class="mt-1 text-sm text-gray-500">${resource.category} · ${resource.size}</p>
+                                <p class="mt-2 text-sm text-gray-600">${resource.description}</p>
+                                <div class="mt-4 flex justify-between items-center">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+                                        ${resource.type.toUpperCase()}
+                                    </span>
+                                    <div class="flex space-x-2">
+                                        <button onclick="showResourceDetail(${resource.id})" class="text-sm font-medium text-gray-600 hover:text-indigo-500">
+                                            详情
+                                        </button>
+                                        <a href="${resource.downloadUrl}" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                                            下载 <span aria-hidden="true">&rarr;</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            // 加载游戏攻略
+            loadGameGuides();
+        }
+
+        // 获取文件类型图标
+        function getFileIcon(type) {
+            const icons = {
+                pdf: 'pdf',
+                epub: 'book',
+                doc: 'file-word',
+                xls: 'file-excel',
+                ppt: 'file-powerpoint',
+                zip: 'file-archive',
+                mp4: 'file-video'
+            };
+            return icons[type] || 'file';
+        }
+
+        // 显示资源详情
+        function showResourceDetail(id) {
+            // 这里将显示资源详情模态框
+            alert(`即将显示资源ID为 ${id} 的详细信息`);
+        }
+
+        // 加载游戏攻略
+        function loadGameGuides() {
+            const gameGuides = [
+                {
+                    id: 1,
+                    title: "原神3.0版本全攻略",
+                    game: "原神",
+                    type: "新手指南",
+                    views: 12500,
+                    likes: 856
+                },
+                {
+                    id: 2,
+                    title: "艾尔登法环BOSS打法大全",
+                    game: "艾尔登法环",
+                    type: "进阶攻略",
+                    views: 8900,
+                    likes: 1024
+                }
+            ];
+            
+            const container = document.querySelector('#games');
+            container.innerHTML = `
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-bold mb-8 text-center">游戏攻略</h2>
+                    <div class="grid gap-6 md:grid-cols-2">
+                        ${gameGuides.map(guide => `
+                        <div class="card-hover bg-white rounded-lg shadow-sm overflow-hidden">
+                            <div class="p-6">
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 bg-purple-100 p-3 rounded-lg text-purple-600">
+                                        <i class="fas fa-gamepad text-xl"></i>
+                                    </div>
+                                    <div class="ml-4 flex-1">
+                                        <h3 class="text-lg font-medium">${guide.title}</h3>
+                                        <div class="mt-2 flex flex-wrap gap-2">
+                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                                                ${guide.game}
+                                            </span>
+                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                                ${guide.type}
+                                            </span>
+                                        </div>
+                                        <div class="mt-4 flex justify-between text-sm text-gray-500">
+                                            <span><i class="fas fa-eye mr-1"></i> ${guide.views.toLocaleString()}</span>
+                                            <span><i class="fas fa-heart mr-1 text-red-500"></i> ${guide.likes.toLocaleString()}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

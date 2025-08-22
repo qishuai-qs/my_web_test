@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知库 - 暗黑风</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0f172a',
+                        darker: '#020617'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hexagon {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+        .glow-text {
+            text-shadow: 0 0 8px rgba(96, 165, 250, 0.6);
+        }
+        .glow-card:hover {
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-darker text-gray-300">
+    <!-- 导航栏 -->
+    <nav class="bg-dark border-b border-gray-800 py-4 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+            <div class="text-xl font-bold text-blue-400 glow-text flex items-center">
+                <i class="fas fa-moon mr-2"></i>
+                <span>DarkLibrary</span>
+            </div>
+            <div class="flex items-center space-x-6">
+                <button id="themeToggle" class="text-gray-400 hover:text-blue-400">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <a href="#" class="text-gray-400 hover:text-blue-400">资源</a>
+                <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-all">
+                    <i class="fab fa-github mr-2"></i>登录
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <main class="max-w-6xl mx-auto px-4 py-12">
+        <!-- 标题区 -->
+        <section class="text-center mb-16">
+            <h1 class="text-5xl font-bold text-white mb-4 glow-text">知识黑洞</h1>
+            <p class="text-xl text-blue-300 max-w-2xl mx-auto">吸收一切有用的信息</p>
+        </section>
+
+        <!-- 蜂窝网格 -->
+        <section class="mb-20">
+            <h2 class="text-2xl font-bold mb-8 text-white border-b border-gray-700 pb-2">资源中心</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="hexagon bg-dark border border-gray-700 glow-card transition-all p-8 flex flex-col items-center justify-center aspect-[1/1.15]">
+                    <div class="text-blue-400 text-3xl mb-4"><i class="fas fa-laptop-code"></i></div>
+                    <h3 class="font-bold text-center mb-2">前端开发</h3>
+                    <p class="text-sm text-gray-400 text-center">15个资源</p>
+                </div>
+                <!-- 更多蜂窝格子... -->
+            </div>
+        </section>
+
+        <!-- 数据可视化 -->
+        <section class="bg-dark rounded-xl p-8 border border-gray-700 mb-12">
+            <h2 class="text-2xl font-bold mb-6 text-white">学习数据</h2>
+            <div class="h-64 bg-darker rounded-lg flex items-center justify-center border border-gray-800">
+                <p class="text-gray-500">动态图表将在这里展示</p>
+            </div>
+        </section>
+
+        <!-- 游戏攻略 -->
+        <section>
+            <h2 class="text-2xl font-bold mb-8 text-white border-b border-gray-700 pb-2">热门攻略</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-dark p-6 rounded-lg border border-gray-700 hover:border-blue-500 transition-all">
+                    <div class="flex items-start">
+                        <div class="bg-blue-900 bg-opacity-30 p-3 rounded-lg mr-4">
+                            <i class="fas fa-gamepad text-blue-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white mb-1">艾尔登法环</h3>
+                            <p class="text-sm text-gray-400 mb-3">全BOSS无伤打法</p>
+                            <div class="flex text-xs text-gray-500">
+                                <span class="mr-3"><i class="fas fa-eye mr-1"></i> 2.4k</span>
+                                <span><i class="fas fa-heart mr-1 text-red-500"></i> 1.1k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 更多游戏卡片... -->
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark border-t border-gray-800 py-12">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <div class="text-2xl font-bold text-blue-400 glow-text mb-4">DarkLibrary</div>
+            <p class="text-gray-500">© 2023 暗夜知识库</p>
+        </div>
+    </footer>
+
+    <script>
+        // 主题切换功能
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            document.documentElement.classList.toggle('dark');
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-sun')) {
+                icon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                icon.classList.replace('fa-moon', 'fa-sun');
+            }
+        });
+    </script>
+</body>
+</html>
