@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 根据参数判断环境
+# 根据参数判断环境,默认为开发环境
 ENV=${1:-development}
 
 case $ENV in
